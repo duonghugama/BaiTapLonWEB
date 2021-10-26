@@ -40,7 +40,6 @@
               placeholder="Enter a valid email address" />
             <label class="form-label" for="form3Example3">Email address</label>
           </div>
-
           <!-- Password input -->
           <div class="form-outline mb-3">
             <input type="password" id="form3Example4" class="form-control form-control-lg"
