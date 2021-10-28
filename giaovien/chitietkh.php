@@ -17,31 +17,35 @@
     <title>Khóa học</title>
   </head>
   <body>
-  <h1 class="bg-info">Thông tin học viên</h1>
+  <h1 class="bg-info">Chi tiết khóa học</h1>
   <main>
-        
-        
+        <!-- Hiển thị BẢNG DỮ LIỆU DANH BẠ CÁ NHÂN -->
+        <!-- Kết nối tới Server, truy vấn dữ liệu (SELECT) từ Bảng db_employees -->
+        <!-- Quy trình 4 bước -->
+       
     
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">Mã SV</th>
-                    <th scope="col">Tên SV</th>
-                    <th scope="col">Giới tính</th>
-                    <th scope="col">Quê quán</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Tên khoa</th>              
-                  
+                    <th scope="col">Mã khóa học</th>
+                    <th scope="col">Tên khóa học</th>
+                    <th scope="col">Kỳ học</th>
+                    <th scope="col">Thời gian bắt đầu</th>
+                    <th scope="col">Thời gian kết thúc</th>
+                    <th scope="col">Môn học</th>
+                    <th scope="col">Giáo viên</th>
+                                 
                 </tr>
             </thead>
             
             <tbody>
-                <!-- Đoạn này thay đổi theo Dữ liệu trong CSDL -->
+               
                 <?php
-                  
-                   
-                    $sql = "SELECT sv.MaSV,sv.Ten,sv.GioiTinh,sv.QueQuan,sv.Email,k.Ten FROM sinhvien sv,khoa k
-                    WHERE sv.MaKhoa = k.MaKhoa ";
+             
+                
+                    // Bước 02: Thực hiện TRUY VẤN
+                    $sql = "SELECT kh.MaKH,kh.Ten,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten,gv.Ten FROM khoahoc kh,monhoc mh,giaovien gv,chitietkhoahoc ct
+                    WHERE kh.MaKH = ct.MaKH AND gv.MaGV = ct.MaGV AND mh.MaMon = ct.MaMon";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
                     // Bước 03: Phân tích và xử lý kết quả
@@ -50,23 +54,23 @@
                        
                         while($row=mysqli_fetch_assoc($result)){
                             echo '<tr>';
-                            echo '<td>'.$row['MaSV'].'</td>';
+                            echo '<td>'.$row['MaKH'].'</td>';
                             echo '<td>'.$row['Ten'].'</td>';
-                            echo '<td>'.$row['GioiTinh'].'</td>';
-                            echo '<td>'.$row['QueQuan'].'</td>';
-                            echo '<td>'.$row['Email'].'</td>';
+                            echo '<td>'.$row['Ky'].'</td>';
+                            echo '<td>'.$row['ThoiGianBatDau'].'</td>';
+                            echo '<td>'.$row['ThoiGianKetThuc'].'</td>';
+                            echo '<td>'.$row['Ten'].'</td>';
                             echo '<td>'.$row['Ten'].'</td>';
                             echo '</tr>';
                         }
                     }
-               
                
                 ?>
                 
                 
             </tbody>
             </table>
-            
+            <a href="chitietkh.php" class="btn btn-success"><i class="fas fa-user-plus"></i>Chi tiết</a>
     </main>
     
    

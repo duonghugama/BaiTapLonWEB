@@ -22,8 +22,7 @@
                     <li><a href="GV.php">Thông tin giáo viên</a></li>
                     <li><a href="KH.php">Khóa học</a></li>
                     <li><a href="SV.php">Sinh viên</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <li><a href="logout.php">Đăng xuất</a></li>
                 </ul>
             </div>
         </div>
-        <!-- Menu Section Ends -->
