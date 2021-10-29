@@ -17,7 +17,7 @@
     <title>Khóa học</title>
   </head>
   <body>
-  <h1 class="bg-info">Thông tin khóa học</h1>
+  <h1 class="bg-info">Thông tin khóa học được phân công</h1>
   <main>
         <!-- Hiển thị BẢNG DỮ LIỆU DANH BẠ CÁ NHÂN -->
         <!-- Kết nối tới Server, truy vấn dữ liệu (SELECT) từ Bảng db_employees -->
@@ -32,6 +32,9 @@
                     <th scope="col">Kỳ học</th>
                     <th scope="col">Thời gian bắt đầu</th>
                     <th scope="col">Thời gian kết thúc</th>
+                    <th scope="col">Môn học</th>
+                    
+
                                  
                 </tr>
             </thead>
@@ -42,7 +45,8 @@
              
                 
                     // Bước 02: Thực hiện TRUY VẤN
-                    $sql = "SELECT * FROM khoahoc";
+                    $sql = "SELECT ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
+                    WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND ct.MaGV ='3' ";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
                     // Bước 03: Phân tích và xử lý kết quả
@@ -52,10 +56,12 @@
                         while($row=mysqli_fetch_assoc($result)){
                             echo '<tr>';
                             echo '<td>'.$row['MaKH'].'</td>';
-                            echo '<td>'.$row['Ten'].'</td>';
+                            echo '<td>'.$row['TenKH'].'</td>';
                             echo '<td>'.$row['Ky'].'</td>';
                             echo '<td>'.$row['ThoiGianBatDau'].'</td>';
                             echo '<td>'.$row['ThoiGianKetThuc'].'</td>';
+                            echo '<td>'.$row['TenMH'].'</td>';
+                           
                            
                             echo '</tr>';
                         }
@@ -66,8 +72,7 @@
                 
             </tbody>
             </table>
-            <a href="chitietkh.php" class="btn btn-success"><i class="fas fa-user-plus"></i>Chi tiết</a>
-            <a href="KHGV.php" class="btn btn-success"><i class="fas fa-user-plus"></i>Khóa học được phân công</a>
+            
     </main>
     
    
