@@ -16,6 +16,7 @@ if (isset($_POST['dangNhap'])) {
             $_SESSION["Quyen"] = $row["Permission_ID"];
             $_SESSION["UserName"] = $row["UserName"];
             $_SESSION["Password"] = $row["Password"];
+            $_SESSION["Email"] = $row["Email"];
             switch ($_SESSION["Quyen"]) {
                 case 1:
                     header("location: ./giaovien/index.php");
