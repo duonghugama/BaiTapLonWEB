@@ -1,7 +1,7 @@
 <?php 
 
 include('constants.php'); 
-    $sql = "SELECT * FROM giaovien , khoa where giaovien.MaKhoa = khoa.MaKhoa and MaGV = '3'";
+    $sql = "SELECT gv.MaGV,gv.Ten as TenGV,gv.Email,gv.SDT,k.Ten as TenK FROM giaovien gv,khoa k where gv.MaKhoa = k.MaKhoa and MaGV = '3'";
     $res = mysqli_query($conn, $sql);
     if(mysqli_num_rows($res) > 0){
         $row = mysqli_fetch_assoc($res);
@@ -33,7 +33,7 @@ include('constants.php');
                 </div>
                 <div class="form-group ms-5">
                     <label for="inputText">Họ và tên: </label>
-                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['Ten']?>" readonly>
+                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['TenGV']?>" readonly>
                 </div>
 
                 <div class="form-group ms-5">
@@ -48,7 +48,7 @@ include('constants.php');
 
                 <div class="form-group ms-5">
                     <label for="inputText">Khoa: </label>
-                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['Ten']?>" readonly>
+                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['TenK']?>" readonly>
                 </div>
             </div>
        
