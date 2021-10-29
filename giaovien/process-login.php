@@ -21,7 +21,7 @@
             if(mysqli_num_rows($result) > 0){
                 // Bảo vệ cửa CHÍNH: kiểm tra xác thực
                 $_SESSION['loginOK'] = $username;
-                header("Location: home.php");
+                header("Location: KH.php");
             }else{
                 $_SESSION['login'] = "<div class='error text-center'>Username or Password did not match.</div>";
                 header("Location: login.php");

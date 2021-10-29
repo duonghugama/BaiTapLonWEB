@@ -27,13 +27,14 @@
         <table class="table">
             <thead>
                 <tr>
+                    
                     <th scope="col">Mã khóa học</th>
                     <th scope="col">Tên khóa học</th>
                     <th scope="col">Kỳ học</th>
-                    <th scope="col">Thời gian bắt đầu</th>
-                    <th scope="col">Thời gian kết thúc</th>
-                    <th scope="col">Môn học</th>
+                    <th scope="col">Mã môn</th>
+                    <th scope="col">Tên môn</th>
                     <th scope="col">Giáo viên</th>
+                    
                                  
                 </tr>
             </thead>
@@ -44,8 +45,8 @@
              
                 
                     // Bước 02: Thực hiện TRUY VẤN
-                    $sql = "SELECT kh.MaKH,kh.Ten,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten,gv.Ten FROM khoahoc kh,monhoc mh,giaovien gv,chitietkhoahoc ct
-                    WHERE kh.MaKH = ct.MaKH AND gv.MaGV = ct.MaGV AND mh.MaMon = ct.MaMon";
+                    $sql = "SELECT ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,ct.MaMon,mh.Ten as TenMH,gv.Ten as TenGV FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
+                    WHERE  (ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon) ";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
                     // Bước 03: Phân tích và xử lý kết quả
@@ -54,13 +55,15 @@
                        
                         while($row=mysqli_fetch_assoc($result)){
                             echo '<tr>';
+                           
                             echo '<td>'.$row['MaKH'].'</td>';
-                            echo '<td>'.$row['Ten'].'</td>';
+                            echo '<td>'.$row['TenKH'].'</td>';
                             echo '<td>'.$row['Ky'].'</td>';
-                            echo '<td>'.$row['ThoiGianBatDau'].'</td>';
-                            echo '<td>'.$row['ThoiGianKetThuc'].'</td>';
-                            echo '<td>'.$row['Ten'].'</td>';
-                            echo '<td>'.$row['Ten'].'</td>';
+                            echo '<td>'.$row['MaMon'].'</td>';
+                            echo '<td>'.$row['TenMH'].'</td>';
+                            echo '<td>'.$row['TenGV'].'</td>';
+                            
+                            
                             echo '</tr>';
                         }
                     }
@@ -70,7 +73,7 @@
                 
             </tbody>
             </table>
-            <a href="chitietkh.php" class="btn btn-success"><i class="fas fa-user-plus"></i>Chi tiết</a>
+            
     </main>
     
    

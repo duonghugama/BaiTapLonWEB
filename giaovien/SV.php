@@ -25,6 +25,9 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th scope="col">Mã khóa học</th>
+                    <th scope="col">Tên khóa học</th>
+                    <th scope="col">Môn học</th>
                     <th scope="col">Mã SV</th>
                     <th scope="col">Tên SV</th>
                     <th scope="col">Giới tính</th>
@@ -40,8 +43,8 @@
                 <?php
                   
                    
-                    $sql = "SELECT sv.MaSV,sv.Ten,sv.GioiTinh,sv.QueQuan,sv.Email,k.Ten FROM sinhvien sv,khoa k
-                    WHERE sv.MaKhoa = k.MaKhoa ";
+                    $sql = "SELECT c.MaKH,kh.Ten as TenKH,m.Ten as TenMH,sv.MaSV,sv.Ten as TenSV,sv.GioiTinh,sv.QueQuan,sv.Email,k.Ten as TenK FROM sinhvien sv,khoa k,chitietdangky c,khoahoc kh,monhoc m
+                    WHERE (sv.MaKhoa = k.MaKhoa AND c.MaKH = kh.MaKH AND c.MaMon = m.MaMon AND c.MaSV = sv.MaSV) ";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
                     // Bước 03: Phân tích và xử lý kết quả
@@ -50,12 +53,15 @@
                        
                         while($row=mysqli_fetch_assoc($result)){
                             echo '<tr>';
+                            echo '<td>'.$row['MaKH'].'</td>';
+                            echo '<td>'.$row['TenKH'].'</td>';
+                            echo '<td>'.$row['TenMH'].'</td>';
                             echo '<td>'.$row['MaSV'].'</td>';
-                            echo '<td>'.$row['Ten'].'</td>';
+                            echo '<td>'.$row['TenSV'].'</td>';
                             echo '<td>'.$row['GioiTinh'].'</td>';
                             echo '<td>'.$row['QueQuan'].'</td>';
                             echo '<td>'.$row['Email'].'</td>';
-                            echo '<td>'.$row['Ten'].'</td>';
+                            echo '<td>'.$row['TenK'].'</td>';
                             echo '</tr>';
                         }
                     }

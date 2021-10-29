@@ -18,9 +18,8 @@
         <div class="menu text-center">
             <div class="wrapper">
                 <ul>
-                    <li><a href="home.php">Trang chủ</a></li>
-                    <li><a href="GV.php">Thông tin giáo viên</a></li>
                     <li><a href="KH.php">Khóa học</a></li>
+                    <li><a href="GV.php">Thông tin giáo viên</a></li>
                     <li><a href="SV.php">Sinh viên</a></li>
                     <li><a href="logout.php">Đăng xuất</a></li>
                 </ul>
