@@ -1,3 +1,6 @@
+
+
+
 <?php
 include("./header.php");
 include("config/db.php");
@@ -71,9 +74,48 @@ include("config/db.php");
             <div class="col-md mt-5">
                 <h4 style="font-weight: 500;">Lớp học phần</h4>
                 <!-- Start Danh sách lớp học được đăng ký -->
-                <?php
-                    // include('./chiTietHocPhan.php');
-                ?>
+                    
+
+<table class="table table-bordered">
+<thead>
+    <tr>
+        <th class="col-md-1"></th>
+        <th scope="col">Thời gian bắt đầu</th>
+        <th scope="col">Thời gian kết thúc</th>
+        <th scope="col">Tiết</th>
+        <th scope="col">Phòng</th>
+        <th scope="col">Giáo viên</th>
+    </tr>
+</thead>
+<tbody>
+    <?php
+          include('config/db.php');
+         $MaMon = $_GET['idMon'];
+         $sql_dsHocPhan = "SELECT ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc FROM chitietkhoahoc , monhoc , khoahoc, giaovien
+         WHERE chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV
+         and monhoc.MaMon = $MaMon";
+         $rs_dsHocPhan = mysqli_query($conn, $sql_dsHocPhan);
+     if (mysqli_num_rows($rs_dsHocPhan) > 0) {
+         while ($row_dsHocPhan = mysqli_fetch_array($rs_dsHocPhan)) {
+     ?>
+             <tr>
+                 <td>
+                     <input class="form-check-input ms-2" type="checkbox" value="" aria-label="...">
+                 </td>
+                 <td><?php echo $row_dsHocPhan['ThoiGianBatDau']?></td>
+                 <td><?php echo $row_dsHocPhan['ThoiGianKetThuc']?></td>
+                 <td><?php echo $row_dsHocPhan['tietBatDau'].' <i class="fas fa-arrow-right"></i> '.$row_dsHocPhan['tietKetThuc']?></td>
+                 <td><?php echo $row_dsHocPhan['phongHoc']?></td>
+                 <td><?php echo $row_dsHocPhan['tenGV']?></td>
+             </tr>
+
+     <?php
+
+         }
+     }
+    ?>
+</tbody>
+</table>
                 <!-- End Danh sách lớp học được đăng ký -->
 
             </div>

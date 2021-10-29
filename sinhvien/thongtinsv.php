@@ -7,7 +7,9 @@ include("./header.php");
 <?php
     include('config/db.php');
 
-    $sql = "SELECT * FROM sinhvien , khoa where sinhvien.MaKhoa = khoa.MaKhoa and MaSV = '3'";
+    $sql = "SELECT MaSV , sinhvien.Ten as tenSV , GioiTinh , QueQuan, Email, sinhvien.MaKhoa,
+           khoa.Ten as tenKhoa
+             FROM sinhvien , khoa where sinhvien.MaKhoa = khoa.MaKhoa and MaSV = '3'";
     $rs = mysqli_query($conn, $sql);
     if(mysqli_num_rows($rs) > 0){
         $row = mysqli_fetch_assoc($rs);
@@ -28,7 +30,7 @@ include("./header.php");
                 </div>
                 <div class="form-group ms-5">
                     <label for="inputText">Họ và tên: </label>
-                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['Ten']?>" readonly>
+                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['tenSV']?>" readonly>
                 </div>
             </div>
         </div>
@@ -49,7 +51,7 @@ include("./header.php");
 
         <div class="form-group me-5">
            <label for="inputKhoa">Khoa</label>
-            <input type="text" class="form-control" id="inputKhoa" value="<?php echo $row['Ten']?>" readonly>
+            <input type="text" class="form-control" id="inputKhoa" value="<?php echo $row['tenKhoa']?>" readonly>
         </div>
     </form>
 </main>

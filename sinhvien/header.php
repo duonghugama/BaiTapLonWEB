@@ -33,7 +33,7 @@
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fas fa-graduation-cap me-3"></i>Đăng ký học</a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
               <li>
-                <a href="#">Đăng ký học</a>
+                <a href="./dangkyhoc.php" id="dangKyHoc">Đăng ký học</a>
               </li>
               <li>
                 <a href="#">Kết quả đăng ký học</a>
@@ -50,7 +50,6 @@
             <a href="#"><i class="fas fa-address-card me-3"></i>Contact</a>
           </li>
         </ul>
-
         <div class="footer">
           <p>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
