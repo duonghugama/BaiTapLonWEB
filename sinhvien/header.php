@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(!isset( $_SESSION["checkLogin"])){
+    header("location: ../index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -83,7 +91,7 @@
               <a class="dropdown-item" href="#">Đổi mật khẩu</a>
             </li>
             <li>
-              <a class="dropdown-item" href="../index.php">Đăng Xuất</a>
+              <a class="dropdown-item" href="./logout.php">Đăng Xuất</a>
             </li>
           </ul>
           <!--End Profile -->
