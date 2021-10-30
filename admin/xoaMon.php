@@ -4,16 +4,16 @@ if($_SESSION["Quyen"]!= 3)
 {
     header("location: ../index.php");
 }
-$MaKH = $_GET['MaKH'];
+$MaMon = $_GET['MaMon'];
 $connect = mysqli_connect('localhost', 'root', '', 'baitaploncnw');
 if (!$connect) {
     die("Không thể kết nối");
 }
-$sql = "DELETE FROM khoahoc WHERE MaKH = $MaKH";
+$sql = "DELETE FROM monhoc WHERE MaMon = $MaMon";
 echo $sql;
 $result = mysqli_query($connect, $sql);
 if ($result > 0) {
-    header("Location:index.php");
+    header("Location: monhoc.php");
 } else {
     echo "Lỗi!";
 }
