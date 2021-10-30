@@ -4,15 +4,18 @@ if($_SESSION["Quyen"]!= 3)
 {
     header("location: ../index.php");
 }
+$MaKH = $_GET["MaKH"];
 $ten = $_POST["nam"];
 $ky = $_POST["ky"];
 $TGBD = $_POST["TGBD"];
 $TGKT = $_POST["TGKT"];
 $ChoPhep = $_POST["ChoPhep"];
 include("./config/db.php");
-$sql = "INSERT INTO `khoahoc`(`Ten`, `Ky`, `ThoiGianBatDau`, `ThoiGianKetThuc`, `DuocDangKy`) 
-VALUES ('$ten','$ky','$TGBD','$TGKT','$ChoPhep')";
-echo $sql;
+$sql = "UPDATE `khoahoc` 
+SET `Ten` = '$ten', `Ky` = '$ky', `ThoiGianBatDau` = '$TGBD', 
+`ThoiGianKetThuc` = '$TGKT', `DuocDangKy` =  '$ChoPhep'
+WHERE `MaKH` = $MaKH";
+echo $MaKH;
 $result = mysqli_query($connect,$sql);
 // Bước 03:
 if($result > 0){
