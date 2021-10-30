@@ -1,63 +1,90 @@
 <?php
-    include('partials/menu.php');
-    include 'constants.php';
+if (isset($_GET["ID"]))
+    $ID = $_GET["ID"];
+else
+    $ID = "";
+include("constants.php");
+include("header.php");
+$sql = "SELECT * from chitietkhoahoc
+WHERE chitietkhoahoc.MaGV ='3' AND ct.ID = $ID";
+$result = mysqli_query($connect, $sql);
+$count = mysqli_num_rows($result);
+$row = mysqli_fetch_assoc($result);
+
+$TGBD = $row["ThoiGianBatDau"];
+$TGKT = $row["ThoiGianKetThuc"];
+$monHoc = $row["TenMH"];
+$phongHoc = $row["phongHoc"];
+
+
 ?>
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Hello, world!</title>
-  </head>
-  <body>
-<main class="container">
-        <h2>Cập nhật khóa học</h2>
-        <form action="process-suaKH.php" method="post">
-            <div class="form-group row">
-                <label for="patientid" class="col-sm-2 col-form-label">Mã khóa học:</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="patientid" name="patientid" >
+<main class="container-sm my-4">
+    <?php
+    echo '<form action="process-suaKH.php?ID='.$ID.'" method="post">'
+    ?>
+        <div class="row align-item-center my-4">
+            <div class="form-group col">
+                <div class="row">
+                    
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label">Tên khóa học</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="firstname" name="firstname">
+        </div>
+        <div class="row align-items-center">
+            <div class="form-group col">
+                <label for="nam" class="row-sm-2 row-form-label">Môn Học</label>
+                <div class="row">
+                    <select class="form-select" aria-label="Default select example" name="MaMon" id="MaMon">
+                        <?php
+                        include("constants.php");
+                        $sql = "SELECT * FROM monhoc";
+                        $result = mysqli_query($connect, $sql);
+                        $count = mysqli_num_rows($result);
+                        if ($count > 0) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                if ($row["MaMon"] == $monHoc)
+                                    echo '<option value=' . $row["MaMon"] . ' selected = "selected">' . $row["Ten"] . '</option>';
+                                else
+                                    echo '<option value=' . $row["MaMon"] . '>' . $row["Ten"] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="lastname" class="col-sm-2 col-form-label">Kì học</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="lastname" name="lastname">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="dateofbirth" class="col-sm-2 col-form-label">Thời gian bắt đầu</label>
-                <div class="col-sm-10">
-                <input type="tel" class="form-control" id="dateofbirth" name="dateofbirth">
-                </div>
-            </div>
-
-            <div class="form-group row">
-                <label for="gender" class="col-sm-2 col-form-label">Môn học</label>
-                <div class="col-sm-10">
-                <input type="tel" class="form-control" id="dateofbirth" name="dateofbirth">
+           
+            <div class="form-group col">
+                <label for="tietBD" class="row-sm-2 row-form-label">Thời gian bắt đầu</label>
+                <div class="row">
+                    <?php               
+                    echo '<input type="date" class="form-control" id="TGBD" name="TGBD" value = "'.$TGBD.'">';
+                    ?>
                 </div>
             </div>
 
+            <div class="form-group col">
+                <label for="tietBD" class="row-sm-2 row-form-label">Thời gian kết thúc</label>
+                <div class="row">
+                    <?php               
+                    echo '<input type="date" class="form-control" id="TGKT" name="TGKT" value = "'.$TGKT.'">';
+                    ?>
+                </div>
+            </div>
+
+            <div class="form-group col">
+                <label for="phongHoc" class="row-sm-2 row-form-label">Phòng học</label>
+                <div class="row">
+                    <?php
+                    echo '<input type="text" class="form-control" id="phongHoc" name="phongHoc" value = "'.$phongHoc.'">';
+                    ?>              
+                </div>
+            </div>
             
-
-            <div class="form-group row">
-                <label for="empMobile" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                    <button type="submit" class="btn btn-success">Lưu lại</button>
-                </div>
-            </div>
-        </form>
-    </main>
-    
+        </div>
+        <div class="d-flex justify-content-end my-3">
+            <button type="submit" name="themChiTiet" id="themChiTiet" class="btn btn-success">Sửa</button>
+        </div>
+    </form>
+</main>
+<?php
+include("footer.php")
+?>

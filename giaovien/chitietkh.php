@@ -3,7 +3,7 @@
     include('constants.php'); 
 
 ?>
-<?php include('partials/menu.php'); ?>
+<?php include('header.php'); ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,9 +11,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+   
     <title>Khóa học</title>
   </head>
   <body>
@@ -34,6 +32,10 @@
                     <th scope="col">Mã môn</th>
                     <th scope="col">Tên môn</th>
                     <th scope="col">Giáo viên</th>
+                    <th scope="col">Phòng học</th>
+                    <th scope="col">Tiết bắt đầu</th>
+                    <th scope="col">Tiết kết thúc</th>
+                    
                     
                                  
                 </tr>
@@ -45,7 +47,7 @@
              
                 
                     // Bước 02: Thực hiện TRUY VẤN
-                    $sql = "SELECT ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,ct.MaMon,mh.Ten as TenMH,gv.Ten as TenGV FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
+                    $sql = "SELECT ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,ct.MaMon,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc,ct.tietBatDau,ct.tietKetThuc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
                     WHERE  (ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon) ";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
@@ -62,8 +64,9 @@
                             echo '<td>'.$row['MaMon'].'</td>';
                             echo '<td>'.$row['TenMH'].'</td>';
                             echo '<td>'.$row['TenGV'].'</td>';
-                            
-                            
+                            echo '<td>'.$row['phongHoc'].'</td>';
+                            echo '<td>'.$row['tietBatDau'].'</td>';
+                            echo '<td>'.$row['tietKetThuc'].'</td>';
                             echo '</tr>';
                         }
                     }
@@ -86,3 +89,6 @@
     -->
   </body>
 </html>
+<?php
+include("./footer.php");
+?>

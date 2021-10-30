@@ -3,7 +3,14 @@
     include('constants.php'); 
 
 ?>
-<?php include('partials/menu.php'); ?>
+<?php
+session_start();
+if($_SESSION["Quyen"]!= 1)
+{
+    header("location: ../index.php");
+}
+?>
+<?php include('header.php'); ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,8 +18,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+   
 
     <title>Khóa học</title>
   </head>
@@ -66,8 +72,8 @@
                 
             </tbody>
             </table>
-            <a href="chitietkh.php" class="btn btn-success"><i class="fas fa-user-plus"></i>Chi tiết</a>
-            <a href="KHGV.php" class="btn btn-success"><i class="fas fa-user-plus"></i>Khóa học được phân công</a>
+            <a href="chitietkh.php" class="btn btn-success"><i class=""></i>Chi tiết</a>
+            <a href="KHGV.php" class="btn btn-success"><i class=""></i>Khóa học được phân công</a>
     </main>
     
    
@@ -80,3 +86,6 @@
     -->
   </body>
 </html>
+<?php
+include("./footer.php");
+?>
