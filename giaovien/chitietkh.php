@@ -1,3 +1,11 @@
+<?php
+session_start();
+if($_SESSION["Quyen"]!= 1)
+{
+    header("location: ../index.php");
+}
+?>
+
 <?php 
 
     include('constants.php'); 
@@ -17,10 +25,7 @@
   <body>
   <h1 class="bg-info">Chi tiết khóa học</h1>
   <main>
-        <!-- Hiển thị BẢNG DỮ LIỆU DANH BẠ CÁ NHÂN -->
-        <!-- Kết nối tới Server, truy vấn dữ liệu (SELECT) từ Bảng db_employees -->
-        <!-- Quy trình 4 bước -->
-       
+ 
     
         <table class="table">
             <thead>

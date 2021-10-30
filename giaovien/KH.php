@@ -25,10 +25,7 @@ if($_SESSION["Quyen"]!= 1)
   <body>
   <h1 class="bg-info">Thông tin khóa học</h1>
   <main>
-        <!-- Hiển thị BẢNG DỮ LIỆU DANH BẠ CÁ NHÂN -->
-        <!-- Kết nối tới Server, truy vấn dữ liệu (SELECT) từ Bảng db_employees -->
-        <!-- Quy trình 4 bước -->
-       
+        
     
         <table class="table">
             <thead>
