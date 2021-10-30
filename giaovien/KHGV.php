@@ -38,7 +38,9 @@ if($_SESSION["Quyen"]!= 1)
                     <th scope="col">Thời gian kết thúc</th>
                     <th scope="col">Môn học</th>
                     <th scope="col">Phòng học</th>
-                    <th scope="col">Cập nhật</th>
+                    <th scope="col">Tiết bắt đầu</th>
+                    <th scope="col">Tiết kết thúc</th>
+                    
 
                     
 
@@ -52,7 +54,7 @@ if($_SESSION["Quyen"]!= 1)
              
                 
                     // Bước 02: Thực hiện TRUY VẤN
-                    $sql = "SELECT ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
+                    $sql = "SELECT ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc,ct.TietBatDau,ct.TietKetThuc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
                     WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND ct.MaGV ='3' ";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
@@ -69,7 +71,9 @@ if($_SESSION["Quyen"]!= 1)
                             echo '<td>'.$row['ThoiGianKetThuc'].'</td>';
                             echo '<td>'.$row['TenMH'].'</td>';
                             echo '<td>'.$row['phongHoc'].'</td>';
-                            echo '<td><a href="suaKH.php?ID=' . $row["ID"] . '"><i class="fas fa-edit"></i></a></td>';
+                            echo '<td>'.$row['TietBatDau'].'</td>';
+                            echo '<td>'.$row['TietKetThuc'].'</td>';
+                           
                            
                            
                             echo '</tr>';
@@ -81,7 +85,7 @@ if($_SESSION["Quyen"]!= 1)
                 
             </tbody>
             </table>
-            
+            <a href="capnhatKH.php" class="btn btn-success"><i class=""></i>Cập nhật thêm thông tin khóa học</a>
     </main>
     
    
