@@ -36,7 +36,7 @@
                 <a href="./dangkyhoc.php" id="dangKyHoc">Đăng ký học</a>
               </li>
               <li>
-                <a href="#">Kết quả đăng ký học</a>
+                <a href="./kqDangKy.php">Kết quả đăng ký học</a>
               </li>
             </ul>
           </li>
@@ -77,13 +77,13 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
             <li>
-              <a class="dropdown-item" href="#">Thông tin sinh viên</a>
+              <a class="dropdown-item" href="./thongtinsv.php">Thông tin sinh viên</a>
             </li>
             <li>
               <a class="dropdown-item" href="#">Đổi mật khẩu</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Đăng Xuất</a>
+              <a class="dropdown-item" href="../index.php">Đăng Xuất</a>
             </li>
           </ul>
           <!--End Profile -->
