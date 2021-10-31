@@ -8,12 +8,6 @@ include("config/db.php");
     <!-- Chọn kì học -->
     <form action="" method="POST">
         <section class="ps-4 d-flex justify-content-start">
-            <!-- <div class="me-3" style="width: 15rem;">
-                <select name="kyHoc" class="form-select" data-mdb-visible-options="3" style="background-color: #f1efef;">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                </select>
-            </div> -->
             <!-- Chọn năm học -->
             <div style="width: 15rem;">
                 <select name="namHoc" class="form-select" data-mdb-visible-options="3" style="background-color: #f1efef;">
@@ -33,7 +27,7 @@ include("config/db.php");
                     <!-- <option value="1">Năm học 2020</option> -->
                 </select>
             </div>
-            <button name="btnXemMon" id="btnMon" class="btn btn-success ms-3">Xem</button>
+            <button name="btnXemMon" id="btnMon" class="btn btn-success ms-3" style="line-height: 1.5;">Tìm kiếm</button>
         </section>
     </form>
     <div class="container-fluid">

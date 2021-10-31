@@ -55,7 +55,7 @@ if(!isset( $_SESSION["checkLogin"])){
             <a href="monhoc.php"><i class="fas fa-book-open me-3"></i>Môn học</a>
           </li>
           <li>
-            <a href="#"><i class="fas fa-address-card me-3"></i>Contact</a>
+            <a href="./contact/contact/index.php"><i class="fas fa-address-card me-3"></i>Contact</a>
           </li>
         </ul>
         <div class="footer">
