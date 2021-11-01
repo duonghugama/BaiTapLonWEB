@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(!isset( $_SESSION["checkLogin"])){
+    header("location: ../index.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +44,7 @@
                 <a href="./dangkyhoc.php" id="dangKyHoc">Đăng ký học</a>
               </li>
               <li>
-                <a href="#">Kết quả đăng ký học</a>
+                <a href="./kqDangKy.php">Kết quả đăng ký học</a>
               </li>
             </ul>
           </li>
@@ -47,7 +55,7 @@
             <a href="monhoc.php"><i class="fas fa-book-open me-3"></i>Môn học</a>
           </li>
           <li>
-            <a href="#"><i class="fas fa-address-card me-3"></i>Contact</a>
+            <a href="./contact/contact/index.php"><i class="fas fa-address-card me-3"></i>Contact</a>
           </li>
         </ul>
         <div class="footer">
@@ -77,13 +85,13 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
             <li>
-              <a class="dropdown-item" href="#">Thông tin sinh viên</a>
+              <a class="dropdown-item" href="./thongtinsv.php">Thông tin sinh viên</a>
             </li>
             <li>
               <a class="dropdown-item" href="#">Đổi mật khẩu</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Đăng Xuất</a>
+              <a class="dropdown-item" href="./logout.php">Đăng Xuất</a>
             </li>
           </ul>
           <!--End Profile -->
