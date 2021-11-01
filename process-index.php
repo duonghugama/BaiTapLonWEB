@@ -4,7 +4,7 @@ if (isset($_POST['dangNhap'])) {
     $user = addslashes($_POST['tenDangNhap']);
     $pass = addslashes($_POST['matKhau']);
     //Kết nối tới database
-    $connect = mysqli_connect('localhost', 'root', '', 'baitaploncnw');
+    $connect = mysqli_connect('localhost', 'root', '', 'dangkyhoc');
     if (!$connect) {
         die("Không thể kết nối");
     }
@@ -17,6 +17,7 @@ if (isset($_POST['dangNhap'])) {
             $_SESSION["UserName"] = $row["UserName"];
             $_SESSION["Password"] = $row["Password"];
             $_SESSION["Email"] = $row["Email"];
+            $_SESSION['checkLogin'] = $user;
             switch ($_SESSION["Quyen"]) {
                 case 1:
                     header("location: ./giaovien/index.php");

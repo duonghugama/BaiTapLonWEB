@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 include("./header.php");
 ?>
@@ -9,7 +8,7 @@ include("./header.php");
 
     $sql = "SELECT MaSV , sinhvien.Ten as tenSV , GioiTinh , QueQuan, Email, sinhvien.MaKhoa,
            khoa.Ten as tenKhoa
-             FROM sinhvien , khoa where sinhvien.MaKhoa = khoa.MaKhoa and MaSV = '3'";
+             FROM sinhvien , khoa where sinhvien.MaKhoa = khoa.MaKhoa and MaSV = '4'";
     $rs = mysqli_query($conn, $sql);
     if(mysqli_num_rows($rs) > 0){
         $row = mysqli_fetch_assoc($rs);

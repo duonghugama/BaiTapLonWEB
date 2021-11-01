@@ -1,5 +1,4 @@
 <?php
-session_start();
 include("./header.php");
 ?>
 <main>
@@ -24,9 +23,10 @@ include("./header.php");
     <tbody>
       <?php
       include("config/db.php");
-      $sql = "SELECT chitietdangky.MaKH as maKH, chitietdangky.MaMon as maMon,chitietdangky.MaSV as maSV, monhoc.SoTC, monhoc.Ten as TenMH, ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc FROM chitietdangky, chitietkhoahoc , monhoc , khoahoc, giaovien, sinhvien
-            WHERE chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV
-             and sinhvien.MaSV = chitietdangky.MaSV and sinhvien.MaSV = 3
+      $sql = "SELECT chitietdangky.MaKH as maKH, monhoc.MaMon as maMon,chitietdangky.MaSV as maSV, monhoc.SoTC, monhoc.Ten as TenMH, ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc 
+      FROM chitietdangky, chitietkhoahoc , monhoc , khoahoc, giaovien, sinhvien
+      WHERE chitietdangky.MaKH = khoahoc.MaKH and chitietdangky.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV and sinhvien.MaSV = chitietdangky.MaSV and chitietdangky.MaSV = 3
+      GROUP BY monhoc.MaMon
            ";
       $rs = mysqli_query($conn, $sql);
       if (mysqli_num_rows($rs)) {

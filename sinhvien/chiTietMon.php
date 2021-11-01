@@ -1,5 +1,6 @@
 <?php
 include('config/db.php');
+
 if(isset($_POST['btnSearch'])){
     $MaMon = $_POST['dscacMon'];
     $sql1 = "SELECT ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc FROM chitietkhoahoc , monhoc , khoahoc, giaovien
