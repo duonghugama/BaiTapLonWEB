@@ -1,3 +1,10 @@
+<?php
+session_start();
+if($_SESSION["Quyen"]!= 1)
+{
+    header("location: ../index.php");
+}
+?>
 </div>
 </div>
 <!-- MDB -->

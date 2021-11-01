@@ -55,7 +55,7 @@ if($_SESSION["Quyen"]!= 1)
                 
                     // Bước 02: Thực hiện TRUY VẤN
                     $sql = "SELECT ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc,ct.TietBatDau,ct.TietKetThuc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
-                    WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND ct.MaGV ='3' ";
+                    WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND Email = '".$_SESSION["Email"]."' ";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
                     // Bước 03: Phân tích và xử lý kết quả
