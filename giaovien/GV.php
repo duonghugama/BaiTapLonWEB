@@ -1,13 +1,23 @@
+<?php
+session_start();
+if($_SESSION["Quyen"]!= 1)
+{
+    header("location: ../index.php");
+}
+?>
+
+
 <?php 
 
 include('constants.php'); 
-    $sql = "SELECT * FROM giaovien , khoa where giaovien.MaKhoa = khoa.MaKhoa and MaGV = '1'";
-    $rs = mysqli_query($conn, $sql);
-    if(mysqli_num_rows($rs) > 0){
-        $row = mysqli_fetch_assoc($rs);
+    $sql = "SELECT gv.MaGV,gv.Ten as TenGV,gv.Email,gv.SDT,k.Ten as TenK FROM giaovien gv,khoa k where gv.MaKhoa = k.MaKhoa and MaGV = '3'";
+    $res = mysqli_query($conn, $sql);
+    if(mysqli_num_rows($res) > 0){
+        $row = mysqli_fetch_assoc($res);
     }
 ?>
-<?php include('partials/menu.php'); ?>
+
+<?php include('header.php'); ?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -15,9 +25,7 @@ include('constants.php');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
+    
     <title>Khóa học</title>
   </head>
   <body>
@@ -33,7 +41,7 @@ include('constants.php');
                 </div>
                 <div class="form-group ms-5">
                     <label for="inputText">Họ và tên: </label>
-                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['Ten']?>" readonly>
+                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['TenGV']?>" readonly>
                 </div>
 
                 <div class="form-group ms-5">
@@ -48,7 +56,7 @@ include('constants.php');
 
                 <div class="form-group ms-5">
                     <label for="inputText">Khoa: </label>
-                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['Ten']?>" readonly>
+                    <input type="text" class="form-control" id="inputText" value="<?php echo $row['TenK']?>" readonly>
                 </div>
             </div>
        
@@ -66,3 +74,6 @@ include('constants.php');
     -->
   </body>
 </html>
+<?php
+include("./footer.php");
+?>

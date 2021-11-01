@@ -20,7 +20,7 @@ if (isset($_POST['dangNhap'])) {
             $_SESSION['checkLogin'] = $user;
             switch ($_SESSION["Quyen"]) {
                 case 1:
-                    header("location: ./giaovien/index.php");
+                    header("location: ./giaovien/KH.php");
                     break;
                 case 2:
                     header("location: ./sinhvien/index.php");
