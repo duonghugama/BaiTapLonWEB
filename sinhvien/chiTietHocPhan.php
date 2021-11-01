@@ -10,16 +10,16 @@ include("config/db.php");
         $checkHocPhan = $_POST['checkHocPhan'];
     if (isset($checkHocPhan)) {
         $MaMon = $_GET['idMon'];
-        $sql_dsHocPhan = "SELECT chitietkhoahoc.MaKH as MaKH,chitietkhoahoc.MaMon,monhoc.Ten as TenMon
-        FROM chitietkhoahoc , monhoc , khoahoc, giaovien
+        $sql_dsHocPhan = "SELECT sinhvien.MaSV as maSV,  chitietkhoahoc.MaKH as MaKH,chitietkhoahoc.MaMon,monhoc.Ten as TenMon
+        FROM chitietkhoahoc , monhoc , khoahoc, giaovien, sinhvien
         WHERE chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV
-       and monhoc.MaMon = $MaMon";
-         $rs_dsHocPhan = mysqli_query($conn, $sql_dsHocPhan);
+       and monhoc.MaMon = $MaMon and sinhvien.Email = '".$_SESSION["Email"]."'";
+        $rs_dsHocPhan = mysqli_query($conn, $sql_dsHocPhan);
          $row_dsHocPhan = mysqli_fetch_array($rs_dsHocPhan);
          if($rs_dsHocPhan){
              $MaKHdk = $row_dsHocPhan['MaKH'];
              $MaMondk = $row_dsHocPhan['MaMon'];
-             $MaSVdk = 3;
+             $MaSVdk = $row_dsHocPhan['maSV'];
              $TenMon = $row_dsHocPhan['TenMon'];
             $sql_dkHoc = "INSERT INTO chitietdangky(MaKH, MaMon ,MaSV) values ('$MaKHdk','$MaMondk','$MaSVdk')";
             $rs_dkHoc = mysqli_query($conn, $sql_dkHoc);
@@ -71,7 +71,7 @@ include("config/db.php");
                         $sql_dsMon = "select monhoc.MaMon as MaMonHoc, monhoc.Ten as tenMon , ThoiGianBatDau, ThoiGianKetThuc, tietBatDau, tietKetThuc, phongHoc, giaovien.Ten
                         from chitietkhoahoc , monhoc , khoahoc, giaovien
                          where chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon = monhoc.MaMon
-                         and giaovien.MaGV = chitietkhoahoc.MaGV and khoahoc.MaKH = '$namHoc';";
+                         and giaovien.MaGV = chitietkhoahoc.MaGV and khoahoc.MaKH = '$namHoc' and DuocDangKy = 1;";
                         //  echo $sql_dsMon;
                         $rs_dsMon = mysqli_query($conn, $sql_dsMon);
                         if (mysqli_num_rows($rs_dsMon) > 0) {
@@ -153,14 +153,14 @@ include("config/db.php");
     <!-- </section> -->
 
 </main>
-<script src="./js/jquery.min.js"></script>
+<!-- <script src="./js/jquery.min.js"></script>
 <script>
     $(document).ready(function() {
         $("#dkMonHoc").click(function() {
             $("#test1").html("<h3 class='text-success'>Hello</h3>");
         })
     })
-</script>
+</script> -->
 
 <?php
 include("./footer.php");

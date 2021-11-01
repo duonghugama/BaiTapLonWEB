@@ -1,11 +1,9 @@
 <?php
 session_start();
-
 if(!isset( $_SESSION["checkLogin"])){
     header("location: ../index.php");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,7 +86,7 @@ if(!isset( $_SESSION["checkLogin"])){
               <a class="dropdown-item" href="./thongtinsv.php">Thông tin sinh viên</a>
             </li>
             <li>
-              <a class="dropdown-item" href="#">Đổi mật khẩu</a>
+              <a class="dropdown-item" href="./doiMK.php?email=<?php echo $_SESSION["Email"]?>">Đổi mật khẩu</a>
             </li>
             <li>
               <a class="dropdown-item" href="./logout.php">Đăng Xuất</a>
