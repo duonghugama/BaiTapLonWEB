@@ -1,6 +1,4 @@
 <?php
-
-
 include('config/db.php');
 include("./header.php");
 ?>
@@ -21,7 +19,7 @@ include("./header.php");
             Thông tin cá nhân</button>
         </a>
 
-        <a href="./chiTietMon.php" class="col-md d-flex justify-content-center">
+        <a href="./monhoc.php" class="col-md d-flex justify-content-center">
         <button class="btn btn-info mt-5" style="width: 250px; height: 200px;">
             <i class="fas fa-university mb-3" style="font-size: 100px; opacity: 0.7;"></i> 
             <br>

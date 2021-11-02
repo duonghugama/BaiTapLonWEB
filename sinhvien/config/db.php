@@ -1,5 +1,5 @@
 <?php
-    $conn = mysqli_connect('localhost','root','','dangkyhoc');
+    $conn = mysqli_connect('localhost','root','','baitaploncnw');
     if(!$conn){
         die('Connect database fail');
     }

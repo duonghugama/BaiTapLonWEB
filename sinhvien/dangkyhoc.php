@@ -43,7 +43,7 @@ include("config/db.php");
                         $sql_dsMon = "select monhoc.MaMon as MaMonHoc, monhoc.Ten as tenMon , ThoiGianBatDau, ThoiGianKetThuc, tietBatDau, tietKetThuc, phongHoc, giaovien.Ten
                         from chitietkhoahoc , monhoc , khoahoc, giaovien
                          where chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon = monhoc.MaMon
-                         and giaovien.MaGV = chitietkhoahoc.MaGV and khoahoc.MaKH = '$namHoc';";
+                         and giaovien.MaGV = chitietkhoahoc.MaGV and khoahoc.MaKH = '$namHoc' and DuocDangKy = 1;";
                         //  echo $sql_dsMon;
                         $rs_dsMon = mysqli_query($conn, $sql_dsMon);
                         if (mysqli_num_rows($rs_dsMon) > 0) {
