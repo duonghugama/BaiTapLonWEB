@@ -23,10 +23,11 @@ include("./header.php");
     <tbody>
       <?php
       include("config/db.php");
-      $sql = "SELECT chitietdangky.MaKH as maKH, monhoc.MaMon as maMon,chitietdangky.MaSV as maSV, monhoc.SoTC, monhoc.Ten as TenMH, ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc 
-      FROM chitietdangky, chitietkhoahoc , monhoc , khoahoc, giaovien, sinhvien
-      WHERE chitietdangky.MaKH = khoahoc.MaKH and chitietdangky.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV and sinhvien.MaSV = chitietdangky.MaSV and sinhvien.Email = '".$_SESSION["Email"]."'
-      GROUP BY monhoc.MaMon
+      $sql = "SELECT chitietdangky.MaMon as maMon,chitietdangky.MaKH as maKH, chitietdangky.MaSV as maSV,  monhoc.SoTC, monhoc.Ten as TenMH, ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc 
+      FROM chitietdangky, chitietkhoahoc , monhoc , khoahoc, giaovien, sinhvien 
+      WHERE chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon = monhoc.MaMon and chitietdangky.MaKH = khoahoc.MaKH 
+      and chitietdangky.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV and sinhvien.MaSV = chitietdangky.MaSV
+      and sinhvien.Email = '".$_SESSION["Email"]."' GROUP BY monhoc.MaMon
            ";
       $rs = mysqli_query($conn, $sql);
       if (mysqli_num_rows($rs)) {
