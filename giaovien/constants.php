@@ -1,10 +1,4 @@
-<?php
-session_start();
-if($_SESSION["Quyen"]!= 1)
-{
-    header("location: ../index.php");
-}
-?>
+
 <?php
 // Bước 01; Kết nối tới CSDL:
         define('HOST','localhost');

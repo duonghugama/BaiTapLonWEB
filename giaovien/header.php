@@ -26,7 +26,7 @@
         
         <ul class="list-unstyled components mb-5">
           <li>
-            <a href="./KH.php"><i class="fas fa-home me-3"></i>Trang chủ</a>
+            <a href="./index.php"><i class="fas fa-home me-3"></i>Trang chủ</a>
           </li>
           <li>
             <a href="./KH.php"><i class="fas fa-graduation-cap me-3"></i>Khóa học</a>
