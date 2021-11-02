@@ -4,7 +4,7 @@ if (isset($_POST['dangNhap'])) {
     $user = addslashes($_POST['tenDangNhap']);
     $pass = addslashes($_POST['matKhau']);
     //Kết nối tới database
-    $connect = mysqli_connect('localhost', 'root', '', 'dangkyhoc');
+    $connect = mysqli_connect('localhost', 'root', '', 'baitaploncnw');
     if (!$connect) {
         die("Không thể kết nối");
     }
