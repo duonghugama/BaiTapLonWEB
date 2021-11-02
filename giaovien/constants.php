@@ -1,3 +1,4 @@
+
 <?php
 // Bước 01; Kết nối tới CSDL:
         define('HOST','localhost');

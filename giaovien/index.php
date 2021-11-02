@@ -1,14 +1,14 @@
+<?php 
+
+    include('constants.php'); 
+
+?>
 <?php
 session_start();
 if($_SESSION["Quyen"]!= 1)
 {
     header("location: ../index.php");
 }
-?>
-<?php 
-
-    include('constants.php'); 
-
 ?>
 <?php include('header.php'); ?>
 <!doctype html>
@@ -18,15 +18,14 @@ if($_SESSION["Quyen"]!= 1)
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
-  
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+
     <title>Khóa học</title>
   </head>
   <body>
-  <h1 class="bg-info">Thông tin khóa học được phân công</h1>
+  <h1 class="bg-info">Thông tin khóa học</h1>
   <main>
-       
+        
     
         <table class="table">
             <thead>
@@ -36,14 +35,6 @@ if($_SESSION["Quyen"]!= 1)
                     <th scope="col">Kỳ học</th>
                     <th scope="col">Thời gian bắt đầu</th>
                     <th scope="col">Thời gian kết thúc</th>
-                    <th scope="col">Môn học</th>
-                    <th scope="col">Phòng học</th>
-                    <th scope="col">Tiết bắt đầu</th>
-                    <th scope="col">Tiết kết thúc</th>
-                    
-
-                    
-
                                  
                 </tr>
             </thead>
@@ -54,8 +45,7 @@ if($_SESSION["Quyen"]!= 1)
              
                 
                     // Bước 02: Thực hiện TRUY VẤN
-                    $sql = "SELECT ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc,ct.TietBatDau,ct.TietKetThuc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
-                    WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND Email = '".$_SESSION["Email"]."' ";
+                    $sql = "SELECT * FROM khoahoc";
                     
                     $result = mysqli_query($conn,$sql); //Lưu kết quả trả về vào result
                     // Bước 03: Phân tích và xử lý kết quả
@@ -65,16 +55,10 @@ if($_SESSION["Quyen"]!= 1)
                         while($row=mysqli_fetch_assoc($result)){
                             echo '<tr>';
                             echo '<td>'.$row['MaKH'].'</td>';
-                            echo '<td>'.$row['TenKH'].'</td>';
+                            echo '<td>'.$row['Ten'].'</td>';
                             echo '<td>'.$row['Ky'].'</td>';
                             echo '<td>'.$row['ThoiGianBatDau'].'</td>';
                             echo '<td>'.$row['ThoiGianKetThuc'].'</td>';
-                            echo '<td>'.$row['TenMH'].'</td>';
-                            echo '<td>'.$row['phongHoc'].'</td>';
-                            echo '<td>'.$row['TietBatDau'].'</td>';
-                            echo '<td>'.$row['TietKetThuc'].'</td>';
-                           
-                           
                            
                             echo '</tr>';
                         }
@@ -85,7 +69,7 @@ if($_SESSION["Quyen"]!= 1)
                 
             </tbody>
             </table>
-            <a href="capnhatKH.php" class="btn btn-success"><i class=""></i>Cập nhật thêm thông tin khóa học</a>
+            
     </main>
     
    

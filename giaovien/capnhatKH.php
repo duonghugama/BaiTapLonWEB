@@ -1,4 +1,12 @@
 <?php
+session_start();
+if($_SESSION["Quyen"]!= 1)
+{
+    header("location: ../index.php");
+}
+?>
+
+<?php
 if (isset($_GET["ID"]))
     $ID = $_GET["ID"];
 else
@@ -6,7 +14,7 @@ else
 include("constants.php");
 include("header.php");
 $sql = "SELECT mh.MaMon,ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
-WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND ct.MaGV ='3' AND kh.DuocDangKy ='1' ";
+WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND kh.DuocDangKy ='1' AND Email = '".$_SESSION["Email"]."' ";
 
 $result = mysqli_query($conn, $sql);
 $count = mysqli_num_rows($result);
@@ -34,7 +42,7 @@ $phongHoc = $row["phongHoc"];
                         <?php
                   
                   $sql = "SELECT ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
-                  WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND ct.MaGV ='3' AND kh.DuocDangKy ='1'   ";
+                  WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon  AND kh.DuocDangKy ='1' AND Email = '".$_SESSION["Email"]."'  ";
                     $result = mysqli_query($conn, $sql);
                     $count = mysqli_num_rows($result);
                    
@@ -55,7 +63,7 @@ $phongHoc = $row["phongHoc"];
                         <?php
                   
                   $sql = "SELECT ct.MaMon,ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
-                  WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND ct.MaGV ='3' AND kh.DuocDangKy ='1'   ";
+                  WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon  AND kh.DuocDangKy ='1' AND Email = '".$_SESSION["Email"]."'   ";
                     $result = mysqli_query($conn, $sql);
                     $count = mysqli_num_rows($result);
                    
@@ -77,7 +85,7 @@ $phongHoc = $row["phongHoc"];
                         <?php
                   
                   $sql = "SELECT gv.MaGV,ct.ID,ct.MaKH as MaKH,kh.Ten as TenKH,kh.Ky,kh.ThoiGianBatDau,kh.ThoiGianKetThuc,mh.Ten as TenMH,gv.Ten as TenGV,ct.phongHoc FROM chitietkhoahoc ct,khoahoc kh,monhoc mh,giaovien gv
-                  WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon AND ct.MaGV ='3' AND kh.DuocDangKy ='1'   ";
+                  WHERE  ct.MaGV = gv.MaGV AND ct.MaKH = kh.MaKH AND ct.MaMon = mh.MaMon  AND kh.DuocDangKy ='1' AND Email = '".$_SESSION["Email"]."'  ";
                     $result = mysqli_query($conn, $sql);
                     $count = mysqli_num_rows($result);
                    

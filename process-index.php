@@ -3,13 +3,14 @@ session_start();
 if (isset($_POST['dangNhap'])) {
     $user = addslashes($_POST['tenDangNhap']);
     $pass = addslashes($_POST['matKhau']);
+    
     //Kết nối tới database
     $connect = mysqli_connect('localhost', 'root', '', 'baitaploncnw');
     if (!$connect) {
         die("Không thể kết nối");
     }
 
-    $sql = "SELECT * FROM user WHERE UserName='$user' And password='$pass'";
+    $sql = "SELECT * FROM user WHERE UserName='$user' And password='$pass' ";
     $result = mysqli_query($connect, $sql);
     if (mysqli_num_rows($result) != 0) {
         while ($row = $result->fetch_assoc()) {
@@ -20,7 +21,7 @@ if (isset($_POST['dangNhap'])) {
             $_SESSION['checkLogin'] = $user;
             switch ($_SESSION["Quyen"]) {
                 case 1:
-                    header("location: ./giaovien/KH.php");
+                    header("location: ./giaovien/index.php");
                     break;
                 case 2:
                     header("location: ./sinhvien/index.php");

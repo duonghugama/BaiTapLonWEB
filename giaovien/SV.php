@@ -1,10 +1,4 @@
-<?php
-session_start();
-if($_SESSION["Quyen"]!= 1)
-{
-    header("location: ../index.php");
-}
-?>
+
 <?php
 session_start();
 if (isset($_GET["MaKH"]))

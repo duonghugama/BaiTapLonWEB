@@ -1,5 +1,5 @@
-</div>
-</div>
+
+
 <!-- MDB -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.js"></script>
 <!-- Bootstrap -->
@@ -8,25 +8,7 @@
 <script src="js/popper.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/main.js"></script>
-<!-- <script>
-  $("#btnTest2").click(function() {
-    var id = "MinhHN";
-    $.ajax({
-      type: 'POST',
-      url: './test.php',
-      data: {
-        dataa: id
-      },
-      // dataType:('html', 'text', 'json', 'xml'),
-      success: function(dt) {
-          alert(dt);
-      },
-      error: function() {
-        alert('Lỗi');
-      }
-    });
-  });
-</script> -->
+
 </body>
 
 </html>

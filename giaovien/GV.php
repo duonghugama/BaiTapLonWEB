@@ -10,7 +10,8 @@ if($_SESSION["Quyen"]!= 1)
 <?php 
 
 include('constants.php'); 
-    $sql = "SELECT gv.MaGV,gv.Ten as TenGV,gv.Email,gv.SDT,k.Ten as TenK FROM giaovien gv,khoa k where gv.MaKhoa = k.MaKhoa and MaGV = '3'";
+    $sql = "SELECT gv.MaGV,gv.Ten as TenGV,gv.Email,gv.SDT,k.Ten as TenK FROM giaovien gv,khoa k
+    where gv.MaKhoa = k.MaKhoa  and Email = '".$_SESSION["Email"]."'";
     $res = mysqli_query($conn, $sql);
     if(mysqli_num_rows($res) > 0){
         $row = mysqli_fetch_assoc($res);
