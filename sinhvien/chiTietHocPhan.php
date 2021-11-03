@@ -10,10 +10,11 @@ include("config/db.php");
         $checkHocPhan = $_POST['checkHocPhan'];
     if (isset($checkHocPhan)) {
         $MaMon = $_GET['idMon'];
-        $sql_dsHocPhan = "SELECT sinhvien.MaSV as maSV,  chitietkhoahoc.MaKH as MaKH,chitietkhoahoc.MaMon,monhoc.Ten as TenMon
+        $sql_dsHocPhan = "SELECT sinhvien.MaSV as maSV,  chitietkhoahoc.MaKH as MaKH,chitietkhoahoc.MaMon as MaMon,monhoc.Ten as TenMon
         FROM chitietkhoahoc , monhoc , khoahoc, giaovien, sinhvien
         WHERE chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV
        and monhoc.MaMon = $MaMon and sinhvien.Email = '".$_SESSION["Email"]."'";
+    //    echo $sql_dsHocPhan;
         $rs_dsHocPhan = mysqli_query($conn, $sql_dsHocPhan);
          $row_dsHocPhan = mysqli_fetch_array($rs_dsHocPhan);
          if($rs_dsHocPhan){
@@ -114,9 +115,10 @@ include("config/db.php");
                             <?php
                             include('config/db.php');
                             $MaMon = $_GET['idMon'];
-                            $sql_dsHocPhan = "SELECT monhoc.Ten as TenMon, ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc FROM chitietkhoahoc , monhoc , khoahoc, giaovien
+                            $sql_dsHocPhan = "SELECT monhoc.Ten as TenMon, ThoiGianBatDau,ThoiGianKetThuc, phongHoc, giaovien.Ten as tenGV , tietBatDau, tietKetThuc 
+                            FROM chitietkhoahoc , monhoc , khoahoc, giaovien
                               WHERE chitietkhoahoc.MaKH = khoahoc.MaKH and chitietkhoahoc.MaMon=monhoc.MaMon and chitietkhoahoc.MaGV = giaovien.MaGV
-                             and monhoc.MaMon = $MaMon";
+                             and monhoc.MaMon = $MaMon and chitietkhoahoc.MaKH = $namHoc";
                             $rs_dsHocPhan = mysqli_query($conn, $sql_dsHocPhan);
                             if (mysqli_num_rows($rs_dsHocPhan) > 0) {
                                 while ($row_dsHocPhan = mysqli_fetch_array($rs_dsHocPhan)) {
